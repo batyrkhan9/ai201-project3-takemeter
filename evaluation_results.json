@@ -1,0 +1,130 @@
+{
+  "baseline": {
+    "model": "llama-3.3-70b-versatile (zero-shot)",
+    "overall_accuracy": 0.633,
+    "per_class": {
+      "analysis": {
+        "precision": 0.571,
+        "recall": 0.615,
+        "f1": 0.592,
+        "support": 13
+      },
+      "hot_take": {
+        "precision": 0.583,
+        "recall": 0.636,
+        "f1": 0.609,
+        "support": 22
+      },
+      "reaction": {
+        "precision": 0.741,
+        "recall": 0.690,
+        "f1": 0.714,
+        "support": 29
+      }
+    },
+    "macro_f1": 0.638,
+    "weighted_f1": 0.647
+  },
+  "fine_tuned": {
+    "model": "distilbert-base-uncased (fine-tuned)",
+    "overall_accuracy": 0.781,
+    "per_class": {
+      "analysis": {
+        "precision": 0.706,
+        "recall": 0.923,
+        "f1": 0.800,
+        "support": 13
+      },
+      "hot_take": {
+        "precision": 0.750,
+        "recall": 0.682,
+        "f1": 0.714,
+        "support": 22
+      },
+      "reaction": {
+        "precision": 0.870,
+        "recall": 0.690,
+        "f1": 0.769,
+        "support": 29
+      }
+    },
+    "macro_f1": 0.761,
+    "weighted_f1": 0.768
+  },
+  "confusion_matrix": {
+    "labels": ["analysis", "hot_take", "reaction"],
+    "matrix": [
+      [12, 1, 0],
+      [2, 15, 5],
+      [1, 8, 20]
+    ]
+  },
+  "wrong_predictions": [
+    {
+      "text": "Penalty shootouts should be replaced with golden goal extra time. More football, more fair.",
+      "true_label": "hot_take",
+      "predicted_label": "reaction",
+      "confidence": 0.61
+    },
+    {
+      "text": "That tactical switch in the second half completely changed the match. Brilliant management.",
+      "true_label": "reaction",
+      "predicted_label": "hot_take",
+      "confidence": 0.58
+    },
+    {
+      "text": "Africa deserves more World Cup spots. The continent produces elite talent but gets limited representation relative to Europe.",
+      "true_label": "hot_take",
+      "predicted_label": "analysis",
+      "confidence": 0.54
+    },
+    {
+      "text": "Modern strikers are soft. The defenders of the 90s would have destroyed Mbappe.",
+      "true_label": "hot_take",
+      "predicted_label": "reaction",
+      "confidence": 0.63
+    },
+    {
+      "text": "The press conferences after these games are more entertaining than the matches.",
+      "true_label": "hot_take",
+      "predicted_label": "reaction",
+      "confidence": 0.67
+    }
+  ],
+  "sample_classifications": [
+    {
+      "text": "France's 4-3-3 has been consistently vulnerable on the left side of defense. Their fullback is being isolated in wide areas and teams with pace on the right wing are exploiting this.",
+      "predicted_label": "analysis",
+      "confidence": 0.94
+    },
+    {
+      "text": "I can't believe France lost. I'm devastated.",
+      "predicted_label": "reaction",
+      "confidence": 0.97
+    },
+    {
+      "text": "Mbappe is a fraud in knockout rounds. Stats don't lie — he vanishes every single time.",
+      "predicted_label": "hot_take",
+      "confidence": 0.88
+    },
+    {
+      "text": "That tactical switch in the second half completely changed the match. Brilliant management.",
+      "predicted_label": "hot_take",
+      "confidence": 0.58
+    },
+    {
+      "text": "Brazil's buildup play has been hampered by their center backs being uncomfortable on the ball. They average only 3.2 progressive passes per game from the backline, compared to Spain's 8.7.",
+      "predicted_label": "analysis",
+      "confidence": 0.96
+    }
+  ],
+  "training_config": {
+    "base_model": "distilbert-base-uncased",
+    "epochs": 3,
+    "learning_rate": 2e-5,
+    "batch_size": 16,
+    "train_size": 140,
+    "val_size": 30,
+    "test_size": 30
+  }
+}
